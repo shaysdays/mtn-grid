@@ -1,0 +1,27 @@
+# secrets
+.env
+
+# python junk
+__pycache__/
+*.pyc
+
+# virtual env
+.venv/
+venv/
+
+# data files
+data/raw/
+data/processed/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# notebooks checkpoints
+.ipynb_checkpoints/
+
+# packaging artifacts
+*.egg-info/
+
+# legacy code
+dnu_activity_scraper_legacy.ipynb
