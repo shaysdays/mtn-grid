@@ -26,22 +26,39 @@ def heatmap_table(df: pd.DataFrame) -> "pd.io.formats.style.Styler":
           .background_gradient(axis=None, vmin=0, vmax=vmax, cmap="Greens")
     )
 
-def build_month_day_grid(df: pd.DataFrame, touches_col: str, date_col="start_date_local") -> pd.DataFrame:
+def build_month_day_grid(
+    df: pd.DataFrame,
+    touches_col: str,
+    date_col: str = "start_date_local",
+) -> pd.DataFrame:
     work = df[[date_col, touches_col]].copy()
     work[date_col] = pd.to_datetime(work[date_col], errors="coerce")
     work = work.dropna(subset=[date_col])
+
     work["month"] = work[date_col].dt.month
     work["day"] = work[date_col].dt.day
 
     work = work[work[touches_col] > 0]
 
     agg = (
-        work.groupby(["day", "month"], as_index=False)[touches_col]
+        work.groupby(["month", "day"], as_index=False)[touches_col]
         .sum()
     )
+
+    # months on rows, days on columns
     grid = agg.pivot(index="month", columns="day", values=touches_col)
-    grid = grid.reindex(index=range(1, 13), columns=range(1, 32)).fillna(0).astype(int)
-    grid = grid.rename(columns=MONTH_LABELS)
+
+    # force full 12x31 shape
+    grid = (
+        grid
+        .reindex(index=range(1, 13), columns=range(1, 32))
+        .fillna(0)
+        .astype(int)
+    )
+
+    # rename month numbers to labels on the INDEX (not columns)
+    grid.index = grid.index.map(MONTH_LABELS)
+
     grid.index.name = None
     grid.columns.name = None
     return grid
@@ -75,7 +92,7 @@ def grid_stats(grid: pd.DataFrame):
     total_touches = int(grid.values.sum())
     return total_cells, completed_cells, completion_pct, total_touches
 
-if peak in ("Sanitas", "Both"):
+if peak in ("Mt. Sanitas", "Both"):
     st.subheader("Mt. Sanitas")
     total_cells, completed, pct, touches = grid_stats(sanitas_grid)
     st.caption(
@@ -86,7 +103,7 @@ if peak in ("Sanitas", "Both"):
 
     st.divider()  # visual separation
 
-if peak in ("Green", "Both"):
+if peak in ("Green Mountain", "Both"):
     st.subheader("Green Mountain")
     total_cells, completed, pct, touches = grid_stats(green_grid)
     st.caption(
