@@ -50,7 +50,7 @@ def count_touches_debounced(encoded_polyline, summit_lat, summit_lon,
 def add_summit_metrics(df: pd.DataFrame, name: str, summit_lat: float, summit_lon: float,
                       enter_m=80, exit_m=120, exit_consec_points=5) -> pd.DataFrame:
     """
-    Adds two columns:
+    Adds two columns to that:
       {name}_touches: int
       {name}_summit: bool
     """
