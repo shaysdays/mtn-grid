@@ -120,6 +120,7 @@ STRAVA_REFRESH_TOKEN=your_refresh_token_here
 ```
 
 Note: you'll only be adding the first two items here. To find your refresh token, read on.
+
 ---
 
 ## Step 6 — Generate a Strava refresh token
