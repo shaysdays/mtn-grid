@@ -1,4 +1,3 @@
-[README.md](https://github.com/user-attachments/files/25061112/README.md)
 # Strava Summit Grids (Streamlit Dashboard)
 
 This project builds a **Streamlit dashboard** that visualizes “summit grids” for common Colorado and New Hampshire peaks. Included are my home peaks in Boulder, Colorado 14ers, and New Hampshire 4kers.
@@ -30,7 +29,7 @@ You end up with a dashboard you can open anytime to track your progress toward c
 - Internet access
 - A **Strava account**
 - **Python 3.10 or newer**
-- A terminal (Windows PowerShell is fine)
+- A terminal (**PowerShell** on Windows, **Terminal** on macOS)
 
 ### You will create
 - A Strava API application (free)
@@ -47,7 +46,7 @@ You end up with a dashboard you can open anytime to track your progress toward c
 ### Option B: Clone with Git
 ```bash
 git clone <YOUR_GITHUB_REPO_URL>
-cd strava_lab
+cd mtn_grid
 ```
 
 Replace `<YOUR_GITHUB_REPO_URL>` with the repo URL from GitHub.
@@ -61,10 +60,19 @@ Replace `<YOUR_GITHUB_REPO_URL>` with the repo URL from GitHub.
 2. Navigate to the project folder (the one containing `streamlit_app.py`)
 3. Click the address bar, type `powershell`, press Enter
 
+### macOS (Terminal)
+1. Open **Terminal**
+2. `cd` into the project folder (example if it’s on your Desktop):
+```bash
+cd ~/Desktop/mtn_grid
+```
+> Tip: you can also drag the folder from Finder into the Terminal window to paste its path.
+
 ---
 
 ## Step 2 — Create and activate a virtual environment
 
+### Windows (PowerShell)
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
@@ -80,16 +88,30 @@ Then activate again:
 .\.venv\Scripts\Activate.ps1
 ```
 
+### macOS (Terminal)
+Create the venv:
+```bash
+python3 -m venv .venv
+```
+
+Activate it:
+```bash
+source .venv/bin/activate
+```
+
+You should now see `(.venv)` at the start of your terminal prompt.
+
 ---
 
 ## Step 3 — Install dependencies
 
-```powershell
+### Windows / macOS
+```bash
 pip install -r requirements.txt
 ```
 
 If that fails:
-```powershell
+```bash
 pip install -e .
 pip install streamlit
 ```
@@ -108,40 +130,54 @@ pip install streamlit
 
 ## Step 5 — Create your `.env` file
 
+### Windows (PowerShell)
 ```powershell
 Copy-Item .env.example .env
 ```
 
-Edit `.env`:
+### macOS (Terminal)
+```bash
+cp .env.example .env
+```
+
+Edit `.env` (any editor is fine). For macOS, `nano` is the simplest:
+```bash
+nano .env
+```
+
+Add:
 ```env
 STRAVA_CLIENT_ID=your_client_id_here
 STRAVA_CLIENT_SECRET=your_client_secret_here
 STRAVA_REFRESH_TOKEN=your_refresh_token_here
 ```
-Note: you'll only be adding `STRAVA_CLIENT_ID` and `STRAVA_CLIENT_SECRET` here. Read on for `STRAVA_REFRESH_TOKEN`.
 
-<<<<<<< HEAD
-Note: you'll only be adding the first two items here. To find your refresh token, read on.
+Note: you'll only be adding `STRAVA_CLIENT_ID` and `STRAVA_CLIENT_SECRET` here initially. Read on for `STRAVA_REFRESH_TOKEN`.
 
-=======
->>>>>>> 1c72ae3 (Update gnis_exporter workbook)
 ---
 
 ## Step 6 — Generate a Strava refresh token
 
-1. Set **Authorization Callback Domain** to:
+1. Click **EDIT** on Strava under **My API Application**, then set **Authorization Callback Domain** to:
 ```
 localhost
 ```
 
-2. Open:
+2. Open the following link after pasting your client ID in place of `YOUR_CLIENT_ID`:
 ```
 https://www.strava.com/oauth/authorize?client_id=YOUR_CLIENT_ID&response_type=code&redirect_uri=http://localhost&approval_prompt=force&scope=read,activity:read_all
 ```
 
-3. Approve access and copy the `code=...` value.
+3. Approve access and copy the `code=...` value from the redirected URL.
 
-Exchange it:
+### Exchange the code for tokens
+
+#### macOS (Terminal) — paste as ONE command
+```bash
+curl -X POST https://www.strava.com/oauth/token   -d client_id=YOUR_CLIENT_ID   -d client_secret=YOUR_CLIENT_SECRET   -d code=YOUR_CODE   -d grant_type=authorization_code
+```
+
+#### Windows (PowerShell)
 ```powershell
 curl -X POST https://www.strava.com/oauth/token `
   -d client_id=YOUR_CLIENT_ID `
@@ -150,29 +186,42 @@ curl -X POST https://www.strava.com/oauth/token `
   -d grant_type=authorization_code
 ```
 
-Copy `refresh_token` into `.env`.
+Copy `refresh_token` from the response into `.env`.
 
 ---
 
 ## Step 7 — Pull your Strava activities
 
+### Windows (PowerShell)
 ```powershell
 python scripts\pull_activities.py
+```
+
+### macOS (Terminal)
+```bash
+python scripts/pull_activities.py
 ```
 
 ---
 
 ## Step 8 — Build the processed dataset
 
+### Windows (PowerShell)
 ```powershell
 python scripts\build_dataset.py
+```
+
+### macOS (Terminal)
+```bash
+python scripts/build_dataset.py
 ```
 
 ---
 
 ## Step 9 — Run the Streamlit dashboard
 
-```powershell
+### Windows / macOS
+```bash
 streamlit run streamlit_app.py
 ```
 
@@ -195,5 +244,3 @@ Never commit:
 - `.env`
 - `data/raw/*`
 - API tokens or secrets
-
-

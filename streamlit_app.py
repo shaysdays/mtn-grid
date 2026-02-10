@@ -2,10 +2,10 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
-from strava_lab.storage import load_processed_activities
-from strava_lab.summits import add_summit_metrics
-from strava_lab.cleaning import activities_to_daily_counts
-from strava_lab.peaks import load_peaks, PEAKS_CSV_PATH, PROCESSED_ACTIVITIES_PATH
+from mtn_grid.storage import load_processed_activities
+from mtn_grid.summits import add_summit_metrics
+from mtn_grid.cleaning import activities_to_daily_counts
+from mtn_grid.peaks import load_peaks, PEAKS_CSV_PATH, PROCESSED_ACTIVITIES_PATH
 
 MONTH_LABELS = {
     1: "Jan", 2: "Feb", 3: "Mar", 4: "Apr",
@@ -127,8 +127,8 @@ def load_and_compute(peaks_mtime: float, acts_mtime: float):
     return df, peaks, grids, peak_stats
 
 
-st.set_page_config(page_title="Summit Grids", layout="wide")
-st.title("Summit Grids")
+st.set_page_config(page_title="MTN GRID", layout="wide")
+st.title("MTN GRID")
 st.subheader("Shay Subramanian")
 
 st.divider()

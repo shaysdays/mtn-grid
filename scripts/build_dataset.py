@@ -1,5 +1,5 @@
-from strava_lab.storage import load_raw_activities, save_processed_activities
-from strava_lab.cleaning import normalize_activities
+from mtn_grid.storage import load_raw_activities, save_processed_activities
+from mtn_grid.cleaning import normalize_activities
 
 if __name__ == '__main__':
     activities = load_raw_activities()

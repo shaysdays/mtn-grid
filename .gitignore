@@ -10,8 +10,9 @@ __pycache__/
 venv/
 
 # data files
-data/raw/
-data/processed/
+data/raw/activities.json
+data/processed/activities.parquet
+data/raw/gnis.txt
 
 # OS junk
 .DS_Store
@@ -25,5 +26,3 @@ Thumbs.db
 
 # legacy code
 dnu_activity_scraper_legacy.ipynb
-
-#
