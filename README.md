@@ -118,9 +118,13 @@ STRAVA_CLIENT_ID=your_client_id_here
 STRAVA_CLIENT_SECRET=your_client_secret_here
 STRAVA_REFRESH_TOKEN=your_refresh_token_here
 ```
+Note: you'll only be adding `STRAVA_CLIENT_ID` and `STRAVA_CLIENT_SECRET` here. Read on for `STRAVA_REFRESH_TOKEN`.
 
+<<<<<<< HEAD
 Note: you'll only be adding the first two items here. To find your refresh token, read on.
 
+=======
+>>>>>>> 1c72ae3 (Update gnis_exporter workbook)
 ---
 
 ## Step 6 — Generate a Strava refresh token
