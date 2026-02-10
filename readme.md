@@ -1,10 +1,7 @@
 [README.md](https://github.com/user-attachments/files/25061112/README.md)
 # Strava Summit Grids (Streamlit Dashboard)
 
-This project builds a **Streamlit dashboard** that visualizes “summit grids” for two Boulder peaks:
-
-- **Mt. Sanitas**
-- **Green Mountain**
+This project builds a **Streamlit dashboard** that visualizes “summit grids” for common Colorado and New Hampshire peaks. Included are my home peaks in Boulder, Colorado 14ers, and New Hampshire 4kers.
 
 A *summit grid* is a calendar-style heatmap:
 
@@ -122,6 +119,7 @@ STRAVA_CLIENT_SECRET=your_client_secret_here
 STRAVA_REFRESH_TOKEN=your_refresh_token_here
 ```
 
+Note: you'll only be adding the first two items here. To find your refresh token, read on.
 ---
 
 ## Step 6 — Generate a Strava refresh token
@@ -179,9 +177,10 @@ Open the local URL shown in the terminal.
 
 ## Using the dashboard
 
-- Select **Mt. Sanitas**, **Green Mountain**, or **Both**
+- By default, the dashboard starts off only populating peaks with valid summits.
+- You can see your overall activity grid at the top.
+- Select your desired states (only Colorado and New Hampshire currently available) and desired peaks
 - Darker green = more summit touches
-- Gray cells = invalid calendar dates
 
 ---
 
@@ -192,12 +191,4 @@ Never commit:
 - `data/raw/*`
 - API tokens or secrets
 
----
 
-## Future improvements
-
-- Cache summit results for faster load
-- Binary vs touches toggle
-- Day-of-year grid
-- More peaks
-- Deploy to Streamlit Community Cloud
