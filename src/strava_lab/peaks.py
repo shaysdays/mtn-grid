@@ -6,6 +6,7 @@ import pandas as pd
 from .config import PROJECT_ROOT
 
 PEAKS_CSV_PATH = PROJECT_ROOT / 'data' / 'peaks.csv'
+PROCESSED_ACTIVITIES_PATH = PROJECT_ROOT / 'data' / 'raw' / 'activities.json'
 
 REQUIRED_COLS = {
     'peak_id',

@@ -44,3 +44,23 @@ def normalize_activities(activities: list[dict]) -> pd.DataFrame:
         df['elev_low_ft'] = df['elev_low_m'] * M_TO_FT
 
     return df
+
+def activities_to_daily_counts(
+    df: pd.DataFrame,
+    date_col: str = "start_date_local",
+) -> pd.DataFrame:
+    work = df[[date_col]].copy()
+    work[date_col] = pd.to_datetime(work[date_col], errors="coerce")
+    work = work.dropna(subset=[date_col])
+
+    work["date"] = work[date_col].dt.date
+
+    daily = (
+        work.groupby("date", as_index=False)
+            .size()
+            .rename(columns={"size": "activity_count"})
+    )
+
+    # build_month_day_grid expects a date-like column
+    daily[date_col] = pd.to_datetime(daily["date"])
+    return daily[[date_col, "activity_count"]]
