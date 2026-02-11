@@ -13,6 +13,7 @@ venv/
 data/raw/activities.json
 data/processed/activities.parquet
 data/raw/gnis.txt
+data/archive/
 
 # OS junk
 .DS_Store

@@ -2,15 +2,19 @@ from __future__ import annotations
 
 from pathlib import Path
 import pandas as pd
+import geopandas as gpd
+from shapely.geometry import Point
 
 from .config import PROJECT_ROOT
 
-PEAKS_CSV_PATH = PROJECT_ROOT / 'data' / 'peaks.csv'
+PEAKS_CSV_PATH = PROJECT_ROOT / 'data' / 'processed' / 'peaks_gnis.csv'
 PROCESSED_ACTIVITIES_PATH = PROJECT_ROOT / 'data' / 'raw' / 'activities.json'
 
 REQUIRED_COLS = {
     'peak_id',
     'peak_name',
+    'state',
+    'county',
     'latitude',
     'longitude',
     'enter_m',
@@ -43,3 +47,13 @@ def load_peaks(path: Path = PEAKS_CSV_PATH) -> pd.DataFrame:
         peaks[c] = pd.to_numeric(peaks[c], errors='raise')
 
     return peaks
+
+def load_peaks_as_gdf(path: Path = PEAKS_CSV_PATH) -> gpd.GeoDataFrame:
+    df = load_peaks(path)
+
+    gdf = gpd.GeoDataFrame(
+        df,
+        geometry=gpd.points_from_xy(df.longitude, df.latitude),
+        crs="EPSG:4326"
+    )
+    return gdf

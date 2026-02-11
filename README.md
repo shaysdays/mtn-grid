@@ -1,6 +1,6 @@
 # Strava Summit Grids (Streamlit Dashboard)
 
-This project builds a **Streamlit dashboard** that visualizes “summit grids” for common Colorado and New Hampshire peaks. Included are my home peaks in Boulder, Colorado 14ers, and New Hampshire 4kers.
+This project builds a **Streamlit dashboard** that visualizes “summit grids” for any peak in the US.
 
 A *summit grid* is a calendar-style heatmap:
 
@@ -233,7 +233,7 @@ Open the local URL shown in the terminal.
 
 - By default, the dashboard starts off only populating peaks with valid summits.
 - You can see your overall activity grid at the top.
-- Select your desired states (only Colorado and New Hampshire currently available) and desired peaks
+- Select your desired states and desired peaks
 - Darker green = more summit touches
 
 ---
