@@ -1,4 +1,4 @@
-feature_id,feature_name,state_name,county_name,prim_lat_dec,prim_long_dec,enter_m,exit_m,exit_consec_points
+peak_id,peak_name,state,county,latitude,longitude,enter_m,exit_m,exit_consec_points
 427,Potter Mesa,Arizona,Apache,34.7578244,-109.6702911,80,120,5
 429,Black Mesa,Arizona,Gila,33.476093,-110.3988241,80,120,5
 430,Black Mesa,Arizona,Mohave,34.3660781,-113.6491406,80,120,5
