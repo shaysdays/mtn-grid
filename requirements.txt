@@ -34,7 +34,6 @@ kiwisolver==1.4.9
 MarkupSafe==3.0.3
 matplotlib==3.10.8
 matplotlib-inline==0.2.1
--e git+https://github.com/shaysdays/mtn-grid@5c7798695b8264171b38b8a7af8d28ee8fca9070#egg=mtn_grid
 narwhals==2.16.0
 nest-asyncio==1.6.0
 numpy==2.4.1
