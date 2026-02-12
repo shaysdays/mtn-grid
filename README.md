@@ -108,12 +108,7 @@ You should now see `(.venv)` at the start of your terminal prompt.
 ### Windows / macOS
 ```bash
 pip install -r requirements.txt
-```
-
-If that fails:
-```bash
 pip install -e .
-pip install streamlit
 ```
 
 ---
