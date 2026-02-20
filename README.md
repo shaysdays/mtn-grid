@@ -189,7 +189,7 @@ Copy `refresh_token` from the response into `.env`.
 
 ### Windows (PowerShell)
 ```powershell
-python scripts\pull_activities.py
+python -m scripts.pull_activities
 ```
 
 ### macOS (Terminal)
@@ -203,7 +203,7 @@ python -m scripts.pull_activities
 
 ### Windows (PowerShell)
 ```powershell
-python scripts\build_dataset.py
+python -m scripts.build_dataset
 ```
 
 ### macOS (Terminal)
