@@ -46,7 +46,7 @@ You end up with a dashboard you can open anytime to track your progress toward c
 ### Option B: Clone with Git
 ```bash
 git clone <YOUR_GITHUB_REPO_URL>
-cd mtn_grid
+cd mtn-grid
 ```
 
 Replace `<YOUR_GITHUB_REPO_URL>` with the repo URL from GitHub.
@@ -194,7 +194,7 @@ python scripts\pull_activities.py
 
 ### macOS (Terminal)
 ```bash
-python scripts/pull_activities.py
+python -m scripts.pull_activities
 ```
 
 ---
@@ -208,7 +208,7 @@ python scripts\build_dataset.py
 
 ### macOS (Terminal)
 ```bash
-python scripts/build_dataset.py
+python -m scripts.build_dataset
 ```
 
 ---
@@ -228,8 +228,9 @@ Open the local URL shown in the terminal.
 
 - By default, the dashboard starts off only populating peaks with valid summits.
 - You can see your overall activity grid at the top.
-- Select your desired states and desired peaks
-- Darker green = more summit touches
+- Select your desired states and desired peaks.
+- Select your desired summit threshold.
+- Darker green = more summit touches.
 
 ---
 

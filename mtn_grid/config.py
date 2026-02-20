@@ -3,7 +3,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 # Project root = folder containing this file's grandparent (src/strava_lab/.. -> project root)
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 ENV_PATH = PROJECT_ROOT / '.env'
 load_dotenv(ENV_PATH)
