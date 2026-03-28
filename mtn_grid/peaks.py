@@ -3,12 +3,10 @@ from __future__ import annotations
 from pathlib import Path
 import pandas as pd
 import geopandas as gpd
-from shapely.geometry import Point
-
 from .config import PROJECT_ROOT
 
 PEAKS_CSV_PATH = PROJECT_ROOT / 'data' / 'processed' / 'peaks_gnis.csv'
-PROCESSED_ACTIVITIES_PATH = PROJECT_ROOT / 'data' / 'raw' / 'activities.json'
+PROCESSED_ACTIVITIES_PATH = PROJECT_ROOT / 'data' / 'processed' / 'activities.parquet'
 
 REQUIRED_COLS = {
     'peak_id',

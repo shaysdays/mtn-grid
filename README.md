@@ -1,6 +1,12 @@
 # Strava Summit Grids (Streamlit Dashboard)
 
+> **Note:** This is the original Streamlit prototype for MtnGrid. The production version is live at [mtngrid.com](https://mtngrid.com), a full-stack Angular + Node.js application with real-time Strava sync, 70k+ peaks, and interactive grid dashboards. This prototype is no longer actively maintained.
+
 This project builds a **Streamlit dashboard** that visualizes “summit grids” for any peak in the US.
+
+
+<img src="gridexample.png" alt="Grid Example" width="1000" style="border: 1px solid #d0d7de; border-radius: 6px;">
+
 
 A *summit grid* is a calendar-style heatmap:
 

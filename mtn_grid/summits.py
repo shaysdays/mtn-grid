@@ -86,29 +86,3 @@ def count_touches_debounced(encoded_polyline, summit_lat, summit_lon,
 
     return touches
 
-"""
-Take in a summit and its lat/long, and add two cols to the dataframe - x_summit and x_touches.
-x_summit is a boolean categorizing the activities as having a summit or not, and x_touches
-counts the summits in the file based on count_touches_debounced().
-"""
-
-def add_summit_metrics(df: pd.DataFrame, name: str, summit_lat: float, summit_lon: float,
-                      enter_m=80, exit_m=120, exit_consec_points=5) -> pd.DataFrame:
-    """
-    Adds two columns to that:
-      {name}_touches: int
-      {name}_summit: bool
-    """
-    touches_col = f'{name}_touches'
-    summit_col = f'{name}_summit'
-
-    df = df.copy()
-    df[touches_col] = df['map.summary_polyline'].apply(
-        lambda p: count_touches_debounced(
-            p, summit_lat, summit_lon,
-            enter_m=enter_m, exit_m=exit_m,
-            exit_consec_points=exit_consec_points
-        )
-    )
-    df[summit_col] = df[touches_col] > 0
-    return df

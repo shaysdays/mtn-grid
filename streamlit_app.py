@@ -154,7 +154,6 @@ def bubble_heatmap(grid: pd.DataFrame, vmax: int | None = None, row_step: int = 
             alt.datum.value >= int(np.ceil(vmax * 0.6)),
             alt.value("white"),
             alt.value("black"),
-            tooltip=alt.value(None)
         )
     )
 
@@ -209,14 +208,6 @@ def load_and_compute(peaks_mtime: float, acts_mtime: float):
                     "_month": act["_month"], "_day": act["_day"],  "_year": act_year, "touches": touches
                 })
 
-    grids = {}
-    peak_stats = {}
-    for pid, records in summited_data.items():
-        peak_hits_df = pd.DataFrame(records)
-        grid = build_month_day_grid(peak_hits_df, "touches")
-        grids[pid] = grid
-        peak_stats[pid] = grid_stats(grid)
-
     return activities, peaks_gdf, summited_data
 
 # --- APP INITIALIZATION ---
@@ -233,6 +224,8 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
+st.info("This is the original MtnGrid prototype. The production app is live at [mtngrid.com](https://mtngrid.com) with real-time Strava sync, 70k+ peaks, and more. This version is no longer maintained.")
 
 st.markdown("""
     <style>

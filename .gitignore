@@ -19,7 +19,8 @@ data/archive/
 .DS_Store
 Thumbs.db
 
-# notebooks checkpoints
+# notebooks
+notebooks/
 .ipynb_checkpoints/
 
 # packaging artifacts
